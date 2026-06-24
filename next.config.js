@@ -17,6 +17,8 @@ module.exports = {
             '@reduxjs/toolkit': { singleton: true },
             'react-redux': { singleton: true },
             '@tanstack/react-query': { singleton: true },
+            '@radix-ui/react-tooltip': { singleton: true },
+            '@radix-ui/react-slot': { singleton: true },
           },
         })
       );
@@ -29,6 +31,7 @@ module.exports = {
           'shared_remote/Input': 'commonjs shared_remote/Input',
           'shared_remote/apiHelper': 'commonjs shared_remote/apiHelper',
           'shared_remote/AuthWrapper': 'commonjs shared_remote/AuthWrapper',
+          'shared_remote/Tooltip': 'commonjs shared_remote/Tooltip',
         }
       ];
     }

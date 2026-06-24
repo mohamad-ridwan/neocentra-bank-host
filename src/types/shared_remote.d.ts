@@ -39,3 +39,11 @@ declare module 'shared_remote/AuthWrapper' {
   export const AuthWrapper: React.ComponentType<AuthWrapperProps>;
   export default AuthWrapper;
 }
+
+declare module 'shared_remote/Tooltip' {
+  import React from 'react';
+  export const Tooltip: React.ComponentType<any>;
+  export const TooltipTrigger: React.ComponentType<any>;
+  export const TooltipContent: React.ComponentType<any>;
+  export const TooltipProvider: React.ComponentType<any>;
+}
