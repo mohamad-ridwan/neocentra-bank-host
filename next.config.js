@@ -10,6 +10,7 @@ module.exports = {
           filename: 'static/chunks/remoteEntry.js',
           remotes: {
             shared_remote: 'shared_remote@http://localhost:3342/_next/static/chunks/remoteEntry.js',
+            auth_remote: 'auth_remote@http://localhost:3343/_next/static/chunks/remoteEntry.js',
           },
           shared: {
             react: { singleton: true, requiredVersion: false },
@@ -32,6 +33,9 @@ module.exports = {
           'shared_remote/apiHelper': 'commonjs shared_remote/apiHelper',
           'shared_remote/AuthWrapper': 'commonjs shared_remote/AuthWrapper',
           'shared_remote/Tooltip': 'commonjs shared_remote/Tooltip',
+          'auth_remote/Login': 'commonjs auth_remote/Login',
+          'auth_remote/VerifyOtp': 'commonjs auth_remote/VerifyOtp',
+          'auth_remote/Logout': 'commonjs auth_remote/Logout',
         }
       ];
     }

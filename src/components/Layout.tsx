@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout, toggleTheme } from 'shared_remote/store';
 import { 
@@ -23,6 +24,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   const dispatch = useDispatch();
+  const router = useRouter();
   const auth = useSelector((state: any) => state.auth);
   const theme = useSelector((state: any) => state.theme);
   
@@ -38,8 +40,7 @@ export default function Layout({ children }: LayoutProps) {
   ];
 
   const handleLogout = () => {
-    localStorage.removeItem('neocentra_token');
-    dispatch(logout());
+    router.push('/logout');
   };
 
   return (
