@@ -2,6 +2,9 @@
 module.exports = {
   content: [
     "./src/**/*.{js,ts,jsx,tsx}",
+    "../neocentra-bank-dashboard/src/**/*.{js,ts,jsx,tsx}",
+    "../neocentra-bank-auth/src/**/*.{js,ts,jsx,tsx}",
+    "../neocentra-bank-shared/src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {

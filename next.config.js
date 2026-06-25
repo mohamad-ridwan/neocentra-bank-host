@@ -11,6 +11,7 @@ module.exports = {
           remotes: {
             shared_remote: 'shared_remote@http://localhost:3342/_next/static/chunks/remoteEntry.js',
             auth_remote: 'auth_remote@http://localhost:3343/_next/static/chunks/remoteEntry.js',
+            dashboard_remote: 'dashboard_remote@http://localhost:3344/_next/static/chunks/remoteEntry.js',
           },
           shared: {
             react: { singleton: true, requiredVersion: false },
@@ -36,6 +37,7 @@ module.exports = {
           'auth_remote/Login': 'commonjs auth_remote/Login',
           'auth_remote/VerifyOtp': 'commonjs auth_remote/VerifyOtp',
           'auth_remote/Logout': 'commonjs auth_remote/Logout',
+          'dashboard_remote/Dashboard': 'commonjs dashboard_remote/Dashboard',
         }
       ];
     }
