@@ -2,6 +2,22 @@ const NextFederationPlugin = require('@module-federation/nextjs-mf');
 
 module.exports = {
   reactStrictMode: true,
+  experimental: {
+    externalDir: true,
+  },
+  async headers() {
+    return [
+      {
+        source: "/api/:path*",
+        headers: [
+          { key: "Access-Control-Allow-Credentials", value: "true" },
+          { key: "Access-Control-Allow-Origin", value: "*" },
+          { key: "Access-Control-Allow-Methods", value: "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
+          { key: "Access-Control-Allow-Headers", value: "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization" },
+        ]
+      }
+    ]
+  },
   webpack(config, options) {
     if (!options.isServer) {
       config.plugins.push(
@@ -34,6 +50,7 @@ module.exports = {
           'shared_remote/apiHelper': 'commonjs shared_remote/apiHelper',
           'shared_remote/AuthWrapper': 'commonjs shared_remote/AuthWrapper',
           'shared_remote/Tooltip': 'commonjs shared_remote/Tooltip',
+          'shared_remote/useRemoteCSS': 'commonjs shared_remote/useRemoteCSS',
           'auth_remote/Login': 'commonjs auth_remote/Login',
           'auth_remote/VerifyOtp': 'commonjs auth_remote/VerifyOtp',
           'auth_remote/Logout': 'commonjs auth_remote/Logout',

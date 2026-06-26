@@ -47,3 +47,17 @@ declare module 'shared_remote/Tooltip' {
   export const TooltipContent: React.ComponentType<any>;
   export const TooltipProvider: React.ComponentType<any>;
 }
+
+declare module 'shared_remote/useRemoteCSS' {
+  export function useRemoteCSS(
+    remoteBaseUrl: string,
+    remoteName: string,
+    exposedModule: string,
+  ): { loaded: boolean; error: Error | null };
+}
+
+declare module 'shared_remote/federatedStats' {
+  import type { NextApiHandler } from 'next';
+  const handler: NextApiHandler;
+  export default handler;
+}
