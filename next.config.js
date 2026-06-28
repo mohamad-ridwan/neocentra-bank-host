@@ -28,6 +28,7 @@ module.exports = {
             shared_remote: 'shared_remote@http://localhost:3342/_next/static/chunks/remoteEntry.js',
             auth_remote: 'auth_remote@http://localhost:3343/_next/static/chunks/remoteEntry.js',
             dashboard_remote: 'dashboard_remote@http://localhost:3344/_next/static/chunks/remoteEntry.js',
+            layout_remote: 'layout_remote@http://localhost:3345/_next/static/chunks/remoteEntry.js',
           },
           shared: {
             react: { singleton: true, requiredVersion: false },
@@ -48,6 +49,7 @@ module.exports = {
           'shared_remote/Button': 'commonjs shared_remote/Button',
           'shared_remote/Input': 'commonjs shared_remote/Input',
           'shared_remote/apiHelper': 'commonjs shared_remote/apiHelper',
+          'shared_remote/globalNavigaton': 'commonjs shared_remote/globalNavigaton',
           'shared_remote/AuthWrapper': 'commonjs shared_remote/AuthWrapper',
           'shared_remote/Tooltip': 'commonjs shared_remote/Tooltip',
           'shared_remote/useRemoteCSS': 'commonjs shared_remote/useRemoteCSS',
@@ -55,6 +57,9 @@ module.exports = {
           'auth_remote/VerifyOtp': 'commonjs auth_remote/VerifyOtp',
           'auth_remote/Logout': 'commonjs auth_remote/Logout',
           'dashboard_remote/Dashboard': 'commonjs dashboard_remote/Dashboard',
+          'layout_remote/Layout': 'commonjs layout_remote/Layout',
+          'layout_remote/Header': 'commonjs layout_remote/Header',
+          'layout_remote/Sidebar': 'commonjs layout_remote/Sidebar',
         }
       ];
     }
