@@ -1,4 +1,5 @@
 const NextFederationPlugin = require('@module-federation/nextjs-mf');
+const path = require('path');
 
 module.exports = {
   reactStrictMode: true,
@@ -42,6 +43,12 @@ module.exports = {
         })
       );
     } else {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        'shared_remote/Skeleton': path.resolve(__dirname, '../neocentra-bank-shared/src/components/ui/skeleton.tsx'),
+        'shared_remote/LayoutSkeleton': path.resolve(__dirname, '../neocentra-bank-shared/src/components/LayoutSkeleton.tsx'),
+        'shared_remote/DashboardSkeleton': path.resolve(__dirname, '../neocentra-bank-shared/src/components/DashboardSkeleton.tsx'),
+      };
       config.externals = [
         ...(config.externals || []),
         {
