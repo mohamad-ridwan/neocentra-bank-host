@@ -77,18 +77,3 @@ declare module "shared_remote/Skeleton" {
   export interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {}
   export const Skeleton: React.ComponentType<SkeletonProps>;
 }
-
-declare module "shared_remote/LayoutSkeleton" {
-  import React from "react";
-  export interface LayoutSkeletonProps {
-    children?: React.ReactNode;
-  }
-  const LayoutSkeleton: React.ComponentType<LayoutSkeletonProps>;
-  export default LayoutSkeleton;
-}
-
-declare module "shared_remote/DashboardSkeleton" {
-  import React from "react";
-  const DashboardSkeleton: React.ComponentType<any>;
-  export default DashboardSkeleton;
-}

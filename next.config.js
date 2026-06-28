@@ -46,8 +46,8 @@ module.exports = {
       config.resolve.alias = {
         ...config.resolve.alias,
         'shared_remote/Skeleton': path.resolve(__dirname, '../neocentra-bank-shared/src/components/ui/skeleton.tsx'),
-        'shared_remote/LayoutSkeleton': path.resolve(__dirname, '../neocentra-bank-shared/src/components/LayoutSkeleton.tsx'),
-        'shared_remote/DashboardSkeleton': path.resolve(__dirname, '../neocentra-bank-shared/src/components/DashboardSkeleton.tsx'),
+        'dashboard_remote/DashboardSkeleton': path.resolve(__dirname, '../neocentra-bank-dashboard/src/components/loaders/DashboardSkeleton.tsx'),
+        'layout_remote/LayoutSkeleton': path.resolve(__dirname, '../neocentra-bank-layout/src/components/loaders/LayoutSkeleton.tsx'),
       };
       config.externals = [
         ...(config.externals || []),

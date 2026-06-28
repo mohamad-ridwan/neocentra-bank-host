@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRemoteCSS } from '../hooks/useRemoteCSS';
 import dynamic from 'next/dynamic';
-import DashboardSkeleton from 'shared_remote/DashboardSkeleton';
+import DashboardSkeleton from 'dashboard_remote/DashboardSkeleton';
 
 const FederatedDashboard = dynamic(() => import('dashboard_remote/Dashboard'), { 
   ssr: false,

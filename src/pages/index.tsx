@@ -1,7 +1,7 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { useRemoteCSS } from '../hooks/useRemoteCSS';
-import LayoutSkeleton from 'shared_remote/LayoutSkeleton';
+import LayoutSkeleton from 'layout_remote/LayoutSkeleton';
 
 const Layout = dynamic(() => import('layout_remote/Layout'), { 
   ssr: false,
