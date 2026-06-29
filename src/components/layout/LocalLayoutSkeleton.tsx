@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default function LocalLayoutSkeleton() {
   return (
@@ -23,7 +23,7 @@ export default function LocalLayoutSkeleton() {
         </div>
         {/* Content Skeleton */}
         <div className="flex-1 p-8 bg-slate-950 animate-pulse">
-          <div className="h-full bg-slate-900/10 rounded-2xl border border-slate-900/20" />
+          <div className="h-full bg-slate-900/50 rounded-2xl border border-slate-900/20" />
         </div>
       </div>
     </div>
