@@ -6,6 +6,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     return;
   }
 
+  const { neocentra_session } = req.cookies;
+  if (!neocentra_session || neocentra_session !== 'mock-jwt-token-neocentra-12345') {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+
   res.status(200).json({
     stats: {
       totalAccounts: 12450,
