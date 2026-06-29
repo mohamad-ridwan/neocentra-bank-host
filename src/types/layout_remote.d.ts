@@ -18,12 +18,3 @@ declare module 'layout_remote/Sidebar' {
   const Sidebar: React.ComponentType<any>;
   export default Sidebar;
 }
-
-declare module 'layout_remote/LayoutSkeleton' {
-  import React from 'react';
-  export interface LayoutSkeletonProps {
-    children?: React.ReactNode;
-  }
-  const LayoutSkeleton: React.ComponentType<LayoutSkeletonProps>;
-  export default LayoutSkeleton;
-}

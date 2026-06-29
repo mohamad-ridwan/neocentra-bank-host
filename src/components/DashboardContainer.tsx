@@ -1,16 +1,21 @@
-import React from 'react';
-import { useRemoteCSS } from '../hooks/useRemoteCSS';
-import dynamic from 'next/dynamic';
-import DashboardSkeleton from 'dashboard_remote/DashboardSkeleton';
+import React from "react";
+import { useRemoteCSS } from "../hooks/useRemoteCSS";
+import dynamic from "next/dynamic";
+import LocalDashboardSkeleton from "./dashboard/LocalDashboardSkeleton";
 
-const FederatedDashboard = dynamic(() => import('dashboard_remote/Dashboard'), { 
+const FederatedDashboard = dynamic(() => import("dashboard_remote/Dashboard"), {
   ssr: false,
-  loading: () => <DashboardSkeleton />
+  loading: () => <LocalDashboardSkeleton />,
 });
 
 export default function DashboardContainer() {
-  const DASHBOARD_MFE_URL = process.env.NEXT_PUBLIC_DASHBOARD_URL || 'http://localhost:3344';
-  const { loaded, error } = useRemoteCSS(DASHBOARD_MFE_URL, 'dashboard_remote', './Dashboard');
+  const DASHBOARD_MFE_URL =
+    process.env.NEXT_PUBLIC_DASHBOARD_URL || "http://localhost:3344";
+  const { loaded, error } = useRemoteCSS(
+    DASHBOARD_MFE_URL,
+    "dashboard_remote",
+    "./Dashboard",
+  );
 
   if (error) {
     return (
@@ -21,7 +26,7 @@ export default function DashboardContainer() {
   }
 
   if (!loaded) {
-    return <DashboardSkeleton />;
+    return <LocalDashboardSkeleton />;
   }
 
   return <FederatedDashboard />;

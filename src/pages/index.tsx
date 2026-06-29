@@ -1,11 +1,11 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { useRemoteCSS } from '../hooks/useRemoteCSS';
-import LayoutSkeleton from 'layout_remote/LayoutSkeleton';
+import LocalLayoutSkeleton from '../components/layout/LocalLayoutSkeleton';
 
 const Layout = dynamic(() => import('layout_remote/Layout'), { 
   ssr: false,
-  loading: () => <LayoutSkeleton />
+  loading: () => <LocalLayoutSkeleton />
 });
 const DashboardContainer = dynamic(() => import('../components/DashboardContainer'), { ssr: false });
 
@@ -21,7 +21,7 @@ export default function Home() {
     );
   }
   if (!loaded) {
-    return <LayoutSkeleton />;
+    return <LocalLayoutSkeleton />;
   }
 
   return (
