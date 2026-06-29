@@ -51,6 +51,14 @@ module.exports = {
           gold: '#D97706',
           teal: '#0D9488',
           accent: '#4F46E5',
+        },
+        error: {
+          bg: '#020617',
+          border: 'rgba(239, 68, 68, 0.2)',
+          glow: 'rgba(239, 68, 68, 0.05)',
+          text: '#f87171',
+          accent: '#ef4444',
+          hover: '#dc2626',
         }
       },
       borderRadius: {
