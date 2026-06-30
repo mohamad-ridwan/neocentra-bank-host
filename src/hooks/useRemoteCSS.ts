@@ -1,1 +1,1 @@
-export { useRemoteCSS } from '../../../neocentra-bank-shared/src/hooks/useRemoteCSS';
+export { useRemoteCSS } from "shared_remote/useRemoteCSS";

@@ -14,7 +14,7 @@ module.exports = {
           {
             key: "Content-Security-Policy",
             value:
-              "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' http://localhost:3341 http://localhost:3342 http://localhost:3343 http://localhost:3344 http://localhost:3345; connect-src 'self' http://localhost:3341 http://localhost:3342 http://localhost:3343 http://localhost:3344 http://localhost:3345; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-ancestors 'none'; object-src 'none';",
+              "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' http://localhost:3341 http://localhost:3342 http://localhost:3343 http://localhost:3344 http://localhost:3345; connect-src 'self' http://localhost:3341 http://localhost:3342 http://localhost:3343 http://localhost:3344 http://localhost:3345; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com http://localhost:3344 http://localhost:3345; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-ancestors 'none'; object-src 'none';",
           },
         ],
       },
@@ -54,6 +54,10 @@ module.exports = {
           __dirname,
           "../neocentra-bank-shared/src/components/ui/skeleton.tsx",
         ),
+        "shared_remote/useRemoteCSS": path.resolve(
+          __dirname,
+          "../neocentra-bank-shared/src/hooks/useRemoteCSS.ts",
+        ),
       };
       config.externals = [
         ...(config.externals || []),
@@ -66,7 +70,6 @@ module.exports = {
             "commonjs shared_remote/globalNavigaton",
           "shared_remote/AuthWrapper": "commonjs shared_remote/AuthWrapper",
           "shared_remote/Tooltip": "commonjs shared_remote/Tooltip",
-          "shared_remote/useRemoteCSS": "commonjs shared_remote/useRemoteCSS",
           "auth_remote/Login": "commonjs auth_remote/Login",
           "auth_remote/VerifyOtp": "commonjs auth_remote/VerifyOtp",
           "auth_remote/Logout": "commonjs auth_remote/Logout",
