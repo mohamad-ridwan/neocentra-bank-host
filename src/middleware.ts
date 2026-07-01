@@ -6,6 +6,7 @@ export function middleware(request: NextRequest) {
   const allowedOrigins = [
     "http://localhost:3341",
     "http://localhost:3344",
+    "https://neocentra.bank.com",
     // "http://localhost:3343",
   ];
 
