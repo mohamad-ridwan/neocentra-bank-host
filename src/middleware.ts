@@ -3,7 +3,11 @@ import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
   const origin = request.headers.get("origin");
-  const allowedOrigins = ["http://localhost:3341", "http://localhost:3344"];
+  const allowedOrigins = [
+    "http://localhost:3341",
+    "http://localhost:3344",
+    // "http://localhost:3343",
+  ];
 
   // Handle preflight OPTIONS request
   if (request.method === "OPTIONS") {
@@ -38,7 +42,10 @@ export function middleware(request: NextRequest) {
   // Validate session cookie for API requests, excluding login and session check endpoints
   if (pathname !== "/api/auth/login" && pathname !== "/api/auth/session") {
     const sessionCookie = request.cookies.get("neocentra_session");
-    if (!sessionCookie || sessionCookie.value !== "mock-jwt-token-neocentra-12345") {
+    if (
+      !sessionCookie ||
+      sessionCookie.value !== "mock-jwt-token-neocentra-12345"
+    ) {
       const loginUrl = new URL("/login", request.url);
       loginUrl.searchParams.set("timeout", "true");
       const redirectResponse = NextResponse.redirect(loginUrl);
@@ -46,10 +53,19 @@ export function middleware(request: NextRequest) {
       // Apply CORS headers on redirect response
       if (origin && allowedOrigins.includes(origin)) {
         redirectResponse.headers.set("Access-Control-Allow-Origin", origin);
-        redirectResponse.headers.set("Access-Control-Allow-Credentials", "true");
+        redirectResponse.headers.set(
+          "Access-Control-Allow-Credentials",
+          "true",
+        );
       } else {
-        redirectResponse.headers.set("Access-Control-Allow-Origin", "http://localhost:3341");
-        redirectResponse.headers.set("Access-Control-Allow-Credentials", "true");
+        redirectResponse.headers.set(
+          "Access-Control-Allow-Origin",
+          "http://localhost:3341",
+        );
+        redirectResponse.headers.set(
+          "Access-Control-Allow-Credentials",
+          "true",
+        );
       }
       return redirectResponse;
     }

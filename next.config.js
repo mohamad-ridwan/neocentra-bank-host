@@ -14,7 +14,7 @@ module.exports = {
           {
             key: "Content-Security-Policy",
             value:
-              "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' http://localhost:3341 http://localhost:3342 http://localhost:3343 http://localhost:3344 http://localhost:3345; connect-src 'self' http://localhost:3341 http://localhost:3342 http://localhost:3343 http://localhost:3344 http://localhost:3345 http://localhost:8080; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com http://localhost:3344 http://localhost:3345; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-ancestors 'none'; object-src 'none';",
+              "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' http://localhost:3341 http://localhost:3342 http://localhost:3343 http://localhost:3344 http://localhost:3345; connect-src 'self' http://localhost:3341 http://localhost:3342  http://localhost:3344 http://localhost:3343 http://localhost:3345 http://localhost:8080; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com http://localhost:3344 http://localhost:3342 http://localhost:3343 http://localhost:3345; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-ancestors 'none'; object-src 'none';",
           },
         ],
       },
