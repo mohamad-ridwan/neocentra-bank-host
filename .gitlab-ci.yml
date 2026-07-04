@@ -1,0 +1,68 @@
+stages:
+  - test
+  - build
+  - deploy
+
+variables:
+  REGISTRY_IMAGE: $CI_REGISTRY_IMAGE
+  IMAGE_TAG: $CI_COMMIT_SHORT_SHA
+
+run_tests:
+  stage: test
+  image: node:20-alpine
+  script:
+    - npm ci
+    - npm run lint || echo "Lint warnings allowed"
+    - npm run test -- --run
+  only:
+    - merge_requests
+    - main
+
+build_image:
+  stage: build
+  image: docker:24.0.5
+  services:
+    - name: docker:24.0.5-dind
+  script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+    
+    # Menyiapkan struktur direktori workspace agar sesuai dengan ekspektasi Dockerfile (root context build)
+    - mkdir -p ../workspace/neocentra-bank-host
+    # Salin isi repositori saat ini ke folder neocentra-bank-host
+    - cp -r * ../workspace/neocentra-bank-host/
+    - cp -r .* ../workspace/neocentra-bank-host/ 2>/dev/null || true
+    
+    # Kloning seluruh dependensi MFE (shared, auth, dashboard, layout) secara dinamis
+    - |
+      for mfe in shared auth dashboard layout; do
+        if [ -n "$GITHUB_PAT" ]; then
+          git clone https://x-access-token:${GITHUB_PAT}@github.com/mohamad-ridwan/neocentra-bank-${mfe}.git ../workspace/neocentra-bank-${mfe}
+        else
+          git clone https://github.com/mohamad-ridwan/neocentra-bank-${mfe}.git ../workspace/neocentra-bank-${mfe}
+        fi
+      done
+      
+    # Jalankan docker build dengan context parent (../workspace)
+    - docker build 
+      --cache-from $REGISTRY_IMAGE:latest 
+      -t $REGISTRY_IMAGE:$IMAGE_TAG 
+      -t $REGISTRY_IMAGE:latest 
+      -f ../workspace/neocentra-bank-host/Dockerfile ../workspace
+      
+    - docker push $REGISTRY_IMAGE:$IMAGE_TAG
+    - docker push $REGISTRY_IMAGE:latest
+  only:
+    - main
+    - feature/setup
+
+deploy_local_k8s:
+  stage: deploy
+  image: bitnami/kubectl:1.27
+  script:
+    - mkdir -p ~/.kube
+    - cp "$KUBECONFIG" ~/.kube/config
+    - kubectl set image deployment/neocentra-mfe-host host-mfe=$REGISTRY_IMAGE:$IMAGE_TAG --record
+    - kubectl rollout status deployment/neocentra-mfe-host
+  only:
+    - main
+    - feature/setup
